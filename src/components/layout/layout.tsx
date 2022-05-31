@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import Header from '../header/header';
 
-import classes from './Layout.module.scss';
+import classes from './layout.module.scss';
 
 // general layout
 const Layout = (props: any) => {

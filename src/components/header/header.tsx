@@ -24,10 +24,10 @@ const Header = () => {
               <Link href='/profile'>Profile</Link>
             </li>
             <li>
-              <Link href='/about_us'>About us</Link>
+              <Link href='/about-us'>About us</Link>
             </li>
             <li>
-              <Link href='/absent_books'>Absent books</Link>
+              <Link href='/absent-books'>Absent books</Link>
             </li>
           </ul>
         </nav>

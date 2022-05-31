@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { Fragment } from 'react';
-import Dammy_page from '../../src/components/Dammy_page';
+import Dammy_page from '../../src/components/dammy-page';
 
 const AbsentBooks = () => {
   return (
