@@ -20,6 +20,7 @@
     margin: 0;
     padding: 0;
     display: flex;
+
     li {
       margin-right: 40px;
     }
@@ -40,20 +41,6 @@
   }
 }
 
-.notification {
-  margin-right: 16px;
-
-  &::before {
-    width: 30px;
-    content: '';
-    height: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-image: url('/assets/icons/notifications.svg');
-  }
-}
-
 .user {
   display: flex;
   font-weight: 400;
@@ -67,9 +54,10 @@
     height: 30px;
     content: '';
     margin-right: 8px;
+    margin-left: 16px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('/assets/icons/user_icon.svg');
+    background-image: url('/assets/icons/user-icon.svg');
   }
 }

@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import Dammy_page from '../../src/components/dammy-page';
+import DammyPage from '../../src/components/dammy-page';
 
 const SupportService = () => {
   return (
@@ -8,7 +8,7 @@ const SupportService = () => {
         <title>Support service</title>
         <meta name='description' content='' />
       </Head>
-      <Dammy_page />
+      <DammyPage />
     </>
   );
 };
