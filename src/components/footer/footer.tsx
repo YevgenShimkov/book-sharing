@@ -2,6 +2,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import classes from './footer.module.scss';
+import facebookIcon from '/public/assets/icons/facebook.svg';
+import instagramIcon from '/public/assets/icons/instagram.svg';
 
 /**
  * footer
@@ -40,20 +42,10 @@ const Header = () => {
 
       <div className={classes.panel__social}>
         <a className={classes.instagram} href='#'>
-          <Image
-            src='/assets/icons/instagram.svg'
-            width={24}
-            height={24}
-            alt='instagram'
-          />
+          <Image src={instagramIcon} width={24} height={24} alt='instagram' />
         </a>
         <a className={classes.facebook} href='#'>
-          <Image
-            src='/assets/icons/facebook.svg'
-            width={25}
-            height={25}
-            alt='facebook'
-          />
+          <Image src={facebookIcon} width={25} height={25} alt='facebook' />
         </a>
       </div>
     </footer>
