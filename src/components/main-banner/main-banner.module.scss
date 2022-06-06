@@ -7,6 +7,10 @@
   background-repeat: no-repeat;
   background-position: top center;
   background-size: cover;
+
+  &_filtered {
+    background: $color-background;
+  }
 }
 
 .title {

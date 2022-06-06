@@ -45,7 +45,7 @@ const Header = () => {
           <Image src={instagramIcon} width={24} height={24} alt='instagram' />
         </a>
         <a className={classes.facebook} href='#'>
-          <Image src={facebookIcon} width={25} height={25} alt='facebook' />
+          <Image src={facebookIcon} width={24} height={24} alt='facebook' />
         </a>
       </div>
     </footer>
