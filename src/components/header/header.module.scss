@@ -1,6 +1,8 @@
 @import '../../../styles/colors.module.scss';
 
 .header {
+  position: fixed;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   padding: 25px 80px;
@@ -8,6 +10,7 @@
   font-size: 16px;
   color: $color-text;
   background-color: $color-background;
+  z-index: 300;
 
   a {
     text-decoration: none;

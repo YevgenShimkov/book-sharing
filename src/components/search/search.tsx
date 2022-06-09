@@ -1,12 +1,13 @@
 import React, { BaseSyntheticEvent, FC, KeyboardEvent, useState } from 'react';
-import Button from '../UI/button';
-import Input from '../UI/input';
-import useDebaunce from '../helpers/useDebaunce';
+import Button from '../button/button';
+import Input from '../input/input';
+import useDebaunce from '../../helpers/useDebaunce';
 
 import classes from './search.module.scss';
 
 /**
  * search by user entered data
+ *
  * @param isSearch- foo setIsSearching from  main-banner for change background in main page
  * @returns search element
  */
@@ -44,7 +45,7 @@ const Search: FC<{ isSearch: (status: boolean) => void }> = ({ isSearch }) => {
   const changesHandler = () => {
     testSearchBookHandler(searchValue);
     setIsSearchActive(true);
-    isSearch(true);
+    // isSearch(true);
     setIsSearchValid(false);
   };
 
@@ -64,7 +65,7 @@ const Search: FC<{ isSearch: (status: boolean) => void }> = ({ isSearch }) => {
   });
 
   // action
-  // TODO search book for name
+  // TODO search book by title / autor
   const testSearchBookHandler = (entered: string) => {
     console.log('try to find your ' + entered + ' book');
   };
@@ -78,7 +79,8 @@ const Search: FC<{ isSearch: (status: boolean) => void }> = ({ isSearch }) => {
         onChange={inputChangeHandler}
         onKeyDown={pressEnterHandler}
       />
-      <Button type='button' classNames={'search'} onClick={searchButtonHandler}>
+      <span onClick={searchButtonHandler}></span>
+      <Button type='button' className={'search'} onClick={searchButtonHandler}>
         Search
       </Button>
     </div>

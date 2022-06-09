@@ -1,12 +1,6 @@
 @import '../../../styles/colors.module.scss';
 
 .button {
-  // margin: 0 auto;
-  // display: block;
-  // margin-top: 30px;
-}
-
-.button {
   font-weight: 600;
   font-size: 16px;
   letter-spacing: 0.02em;
@@ -15,7 +9,7 @@
   color: $color-light-text;
   cursor: pointer;
   border-radius: 8px;
-  width: 176px;
+  width: 167px;
   height: 51px;
 }
 
@@ -27,7 +21,7 @@
 .search {
   width: 118px;
   height: 64px;
-  color: $color-search-btn;
+  color: $color-light-grey;
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
 }

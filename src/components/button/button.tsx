@@ -5,7 +5,7 @@ import classes from './button.module.scss';
 type Props = {
   children?: React.ReactNode;
   type: 'button' | 'submit' | 'reset';
-  classNames: string;
+  className: string;
   onClick: () => void;
   disabled?: boolean;
 };
@@ -18,14 +18,14 @@ type Props = {
 const Button: FC<Props> = ({
   children,
   type,
-  classNames,
+  className,
   onClick,
   disabled = false,
 }) => {
   return (
     <button
       type={type}
-      className={`${classes[classNames]} ${classes.button}`}
+      className={`${classes[className]} ${classes.button}`}
       onClick={onClick}
       disabled={disabled}
     >

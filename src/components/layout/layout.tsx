@@ -1,19 +1,27 @@
-import { Fragment } from 'react';
 import Header from '../header/header';
 import Footer from '../footer/footer';
-
-import classes from './layout.module.scss';
 import MainBanner from '../main-banner/main-banner';
 
-// general layout
-const Layout = (props: any) => {
+import classes from './layout.module.scss';
+
+/**
+ * basic element
+ * @param children components from _app.tsx
+ * @returns
+ */
+
+type LayoutProps = {
+  children: React.ReactNode;
+};
+
+const Layout = ({ children }: LayoutProps) => {
   return (
-    <Fragment>
+    <>
       <Header />
       <MainBanner />
-      {/* <main className={classes.main}>{props.children}</main> */}
+      <main className={classes.main}>{children}</main>
       <Footer />
-    </Fragment>
+    </>
   );
 };
 

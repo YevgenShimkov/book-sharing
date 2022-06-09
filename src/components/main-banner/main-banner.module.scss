@@ -1,7 +1,7 @@
 @import '../../../styles/colors.module.scss';
 
 .main__banner {
-  padding-top: 80px;
+  padding-top: 160px;
   padding-bottom: 278px;
   background-image: url('/assets/main-background.jpg');
   background-repeat: no-repeat;
@@ -10,6 +10,7 @@
 
   &_filtered {
     background: $color-background;
+    padding-bottom: 278px;
   }
 }
 
