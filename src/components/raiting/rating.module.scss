@@ -1,0 +1,31 @@
+@import '/styles/colors.module.scss';
+
+.rating {
+  width: 72px;
+  height: 37px;
+  border-radius: 4px;
+  //   background-color: $color-background-card;
+  background-color: rgb(169, 170, 238);
+  padding: 0 10px;
+  display: flex;
+  justify-content: space-between;
+  color: $color-main;
+  align-items: center;
+  span::before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 20px;
+    background-image: url('/assets/icons/star-fill.svg');
+    // if need pixelperfect
+    // position: absolute;
+    // right: 0px;
+    // top: -11px;
+  }
+}
+
+.weigth {
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: 0.02em;
+}

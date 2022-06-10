@@ -17,6 +17,7 @@ const HandleTooltip = (props: {
     tipFormatter = (val) => `${val} %`,
     ...restProps
   } = props;
+  // console.log(value);
 
   const tooltipRef = React.useRef<any>();
   const rafRef = React.useRef<number | null>(null);

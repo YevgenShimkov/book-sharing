@@ -8,12 +8,12 @@ import Dropdown from './dropdown/dropdown';
 import classes from './filters.module.scss';
 
 // TEST some data
-const Ganre = [
+const Genre = [
   { dropListItm: 'Fantasy', id: 1 },
   { dropListItm: 'Mystery', id: 2 },
   { dropListItm: 'Adventure', id: 3 },
   { dropListItm: 'Western', id: 4 },
-  { dropListItm: 'Ganre', id: 5 },
+  { dropListItm: 'Genre', id: 5 },
   { dropListItm: 'Subgenre', id: 6 },
   { dropListItm: 'Sorting', id: 7 },
   { dropListItm: 'Language', id: 8 },
@@ -26,37 +26,48 @@ const Ganre = [
  */
 const Filters = () => {
   // dropdown state element
-  const [selectedGanre, setSelectedGanre] = useState('Ganre');
+  const [isAvailableChecked, setIsAvailableChecked] = useState(false);
+  const [isPledgedChecked, setIsPlegedChecked] = useState(false);
+  const [selectedGanre, setSelectedGanre] = useState('Genre');
+  const [isGanreSelected, setIsGanreSelected] = useState(true); // for disuble
   const [selectedSubgenre, setSelectedSubgenre] = useState('Subgenre');
   const [selectedSorting, setSelectedSorting] = useState('Sorting');
   const [selectedLanguage, setSelectedLanguage] = useState('Language');
   const [selectedCity, setSelectedCity] = useState('City');
-  const [availableBook, setAvailableBook] = useState(false);
-  const [pledgedBook, setPledgedBook] = useState(false);
-  const [bookRating, setBookRating] = useState<number[]>([]);
-  const [userRating, setUserRating] = useState<number[]>([]);
+  const [bookRating, setBookRating] = useState<number[]>([0, 0]);
+  const [userRating, setUserRating] = useState<number[]>([0, 0]);
 
   // checkboks handlers
   const checkboxAvailableHandler = (checked: boolean) => {
-    setAvailableBook(checked);
+    setIsAvailableChecked(checked);
   };
 
   const checkboxPledgedHandler = (checked: boolean) => {
-    setPledgedBook(checked);
+    setIsPlegedChecked(checked);
   };
 
   // sliders handlers
   const sliderBookRatingHandler = (value: number[]) => {
+    console.log(value);
+
     setBookRating(value);
   };
 
   const sliderUserRatingHandler = (value: number[]) => {
+    console.log(value);
+
     setUserRating(value);
   };
 
   // dropdown handlers
   const dropdownGanreHandler = (selectedDropdown: string) => {
     setSelectedGanre(selectedDropdown);
+    if (selectedDropdown === 'Genre') {
+      setIsGanreSelected(true);
+      setSelectedSubgenre('Subgenre');
+    } else {
+      setIsGanreSelected(false);
+    }
   };
   const dropdownSubgenreHandler = (selectedDropdown: string) => {
     setSelectedSubgenre(selectedDropdown);
@@ -77,6 +88,16 @@ const Filters = () => {
   };
   const resetButtonHandler = () => {
     console.log('to the trash all filters');
+    setSelectedGanre('Genre');
+    setIsGanreSelected(true); // for subgenre disable
+    setSelectedSubgenre('Subgenre');
+    setSelectedSorting('Sorting');
+    setSelectedLanguage('Language');
+    setSelectedCity('City');
+    setIsAvailableChecked(false);
+    setIsPlegedChecked(false);
+    setBookRating([0, 0]);
+    setUserRating([0, 0]);
   };
 
   return (
@@ -86,38 +107,51 @@ const Filters = () => {
         <Checkbox
           labelText='available books'
           checkboxHandler={checkboxAvailableHandler}
+          isChecked={isAvailableChecked}
         />
         <Checkbox
           labelText='book pledged'
           checkboxHandler={checkboxPledgedHandler}
+          isChecked={isPledgedChecked}
         />
       </div>
       <h3 className={`${classes.title} ${classes.subtitle}`}>Book rating</h3>
-      <Slider sliderRatingHandler={sliderBookRatingHandler} min={0} max={5} />
+      <Slider
+        sliderRatingHandler={sliderBookRatingHandler}
+        min={0}
+        max={5}
+        value={bookRating}
+      />
       <h3 className={`${classes.title} ${classes.subtitle}`}>User rating</h3>
-      <Slider sliderRatingHandler={sliderUserRatingHandler} min={0} max={200} />
+      <Slider
+        sliderRatingHandler={sliderUserRatingHandler}
+        min={0}
+        max={200}
+        value={userRating}
+      />
       <Dropdown
-        dropList={Ganre}
+        dropList={Genre}
         value={selectedGanre}
         onChangeDropdown={dropdownGanreHandler}
       />
       <Dropdown
-        dropList={Ganre}
+        dropList={Genre}
         value={selectedSubgenre}
         onChangeDropdown={dropdownSubgenreHandler}
+        isGanreSelected={isGanreSelected}
       />
       <Dropdown
-        dropList={Ganre}
+        dropList={Genre}
         value={selectedSorting}
         onChangeDropdown={dropdownSortingHandler}
       />
       <Dropdown
-        dropList={Ganre}
+        dropList={Genre}
         value={selectedLanguage}
         onChangeDropdown={dropdownLanguageHandler}
       />
       <Dropdown
-        dropList={Ganre}
+        dropList={Genre}
         value={selectedCity}
         onChangeDropdown={dropdownCityHandler}
       />

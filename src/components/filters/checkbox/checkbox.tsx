@@ -5,10 +5,16 @@ import classes from './checkbox.module.scss';
 type Props = {
   labelText: string;
   checkboxHandler: (checked: boolean) => void;
+  isChecked: boolean;
 };
 
-const Checkbox: FC<Props> = ({ labelText, checkboxHandler }) => {
-  const checkboksChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
+/**
+ * Checkbox
+ * @param param0
+ * @returns
+ */
+const Checkbox: FC<Props> = ({ labelText, checkboxHandler, isChecked }) => {
+  const checkboxChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     checkboxHandler(event.target.checked);
   };
 
@@ -17,7 +23,8 @@ const Checkbox: FC<Props> = ({ labelText, checkboxHandler }) => {
       <input
         className={classes.input}
         type='checkbox'
-        onChange={checkboksChangeHandler}
+        onChange={checkboxChangeHandler}
+        checked={isChecked}
       />
       <span />
       {labelText}

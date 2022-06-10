@@ -7,7 +7,8 @@ const Sliders: FC<{
   sliderRatingHandler: (value: number[]) => void;
   min: number;
   max: number;
-}> = ({ sliderRatingHandler, min, max }) => {
+  value: number[];
+}> = ({ sliderRatingHandler, min, max, value }) => {
   const sliderChangeRatingHandler = (value: number | number[]) => {
     if (typeof value === 'object') {
       sliderRatingHandler(value);
@@ -22,6 +23,7 @@ const Sliders: FC<{
         min={min}
         max={max}
         defaultValue={[0, 0]}
+        value={value}
         tipFormatter={(value) => `${value}`}
         onChange={sliderChangeRatingHandler}
         tipProps={undefined}
