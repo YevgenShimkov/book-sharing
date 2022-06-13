@@ -1,0 +1,17 @@
+@import '/styles/colors.module.scss';
+
+.card {
+  width: 414px;
+  height: 807px;
+  background-color: $color-background-card;
+  box-shadow: 2px 4px 10px 1px rgba(181, 181, 181, 0.25);
+  border-radius: 10px;
+}
+
+.filter {
+  padding: 30px;
+}
+
+.book {
+  padding: 346px 20px 30px 20px;
+}

@@ -8,11 +8,12 @@
   font-size: 16px;
   color: $color-light-text;
   background-color: $color-footer;
+  align-items: center;
 
   a {
     text-decoration: none;
     color: $color-light-text;
-    line-height: 30px;
+    line-height: 0px;
   }
 
   ul {
@@ -20,6 +21,7 @@
     margin: 0;
     padding: 0;
     display: flex;
+
     li {
       margin-right: 40px;
     }
@@ -41,23 +43,6 @@
   }
 }
 
-.facebook {
-  display: flex;
-  &::before {
-    width: 26px;
-    height: 25px;
-    content: '';
-    background-image: url('/assets/icons/facebook.svg');
-  }
-}
-
 .instagram {
   margin-right: 18px;
-  display: flex;
-  &::before {
-    width: 24px;
-    height: 24px;
-    content: '';
-    background-image: url('/assets/icons/instagram.svg');
-  }
 }

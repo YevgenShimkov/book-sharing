@@ -1,0 +1,18 @@
+.search {
+  display: flex;
+  margin-top: 70px;
+  justify-content: center;
+  span {
+    position: relative;
+  }
+  span::before {
+    content: '';
+    display: block;
+    width: 27px;
+    height: 27px;
+    background-image: url('/assets/icons/search.svg');
+    position: absolute;
+    right: 35px;
+    top: 17px;
+  }
+}

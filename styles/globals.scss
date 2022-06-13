@@ -1,3 +1,5 @@
+@import './slider.scss';
+
 @font-face {
   font-family: 'Gilroy';
   src: url('./fonts/Gilroy-ExtraBold.eot');
@@ -86,6 +88,17 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Gilroy';
+  src: url('./fonts/Gilroy-Thin.eot');
+  src: local('./fonts/Gilroy Thin'), local('Gilroy-Thin'),
+    url('./fonts/Gilroy-Thin.eot?#iefix') format('embedded-opentype'),
+    url('./fonts/Gilroy-Thin.woff') format('woff'),
+    url('./fonts/Gilroy-Thin.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+}
+
 html,
 body {
   padding: 0;
@@ -98,6 +111,8 @@ a {
   text-decoration: none;
 }
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }

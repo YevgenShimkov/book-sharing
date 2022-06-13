@@ -1,5 +1,7 @@
+@import '/styles/colors.module.scss';
+
 .main {
-  margin: 3rem auto;
-  width: 90%;
+  margin: 0 auto;
   padding: 120px 80px;
+  background-color: $color-background;
 }

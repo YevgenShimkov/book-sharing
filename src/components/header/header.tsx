@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import Image from 'next/image';
+
 import classes from './header.module.scss';
 
 /**
@@ -34,7 +36,12 @@ const Header = () => {
       </div>
 
       <div className={classes.panel__info}>
-        <span className={classes.notification} />
+        <Image
+          src='/assets/icons/notifications.svg'
+          width={30}
+          height={30}
+          alt='notification'
+        />
         <div className={classes.user}>{defaultUser}</div>
       </div>
     </header>
