@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import Button from '../button/button';
-import Card from '../../helpers/Card';
+import Card from '../card/Card';
 import Slider from './slider/slider';
 import Checkbox from './checkbox/checkbox';
 import Dropdown from './dropdown/dropdown';
@@ -26,10 +26,10 @@ const Genre = [
  */
 const Filters = () => {
   // dropdown state element
-  const [isAvailableChecked, setIsAvailableChecked] = useState(false);
-  const [isPledgedChecked, setIsPlegedChecked] = useState(false);
+  const [isAvailableChecked, setAvailableChecked] = useState(false);
+  const [isPledgedChecked, setPlegedChecked] = useState(false);
   const [selectedGanre, setSelectedGanre] = useState('Genre');
-  const [isGanreSelected, setIsGanreSelected] = useState(true); // for disuble
+  const [isGanreSelected, setGanreSelected] = useState(true); // for disuble
   const [selectedSubgenre, setSelectedSubgenre] = useState('Subgenre');
   const [selectedSorting, setSelectedSorting] = useState('Sorting');
   const [selectedLanguage, setSelectedLanguage] = useState('Language');
@@ -39,23 +39,19 @@ const Filters = () => {
 
   // checkboks handlers
   const checkboxAvailableHandler = (checked: boolean) => {
-    setIsAvailableChecked(checked);
+    setAvailableChecked(checked);
   };
 
   const checkboxPledgedHandler = (checked: boolean) => {
-    setIsPlegedChecked(checked);
+    setPlegedChecked(checked);
   };
 
   // sliders handlers
   const sliderBookRatingHandler = (value: number[]) => {
-    console.log(value);
-
     setBookRating(value);
   };
 
   const sliderUserRatingHandler = (value: number[]) => {
-    console.log(value);
-
     setUserRating(value);
   };
 
@@ -63,10 +59,10 @@ const Filters = () => {
   const dropdownGanreHandler = (selectedDropdown: string) => {
     setSelectedGanre(selectedDropdown);
     if (selectedDropdown === 'Genre') {
-      setIsGanreSelected(true);
+      setGanreSelected(true);
       setSelectedSubgenre('Subgenre');
     } else {
-      setIsGanreSelected(false);
+      setGanreSelected(false);
     }
   };
   const dropdownSubgenreHandler = (selectedDropdown: string) => {
@@ -83,19 +79,16 @@ const Filters = () => {
   };
 
   // button handlers
-  const applyButtonHandler = () => {
-    console.log('apply button in ACTION');
-  };
+  const applyButtonHandler = () => {};
   const resetButtonHandler = () => {
-    console.log('to the trash all filters');
     setSelectedGanre('Genre');
-    setIsGanreSelected(true); // for subgenre disable
+    setGanreSelected(true); // for subgenre disable
     setSelectedSubgenre('Subgenre');
     setSelectedSorting('Sorting');
     setSelectedLanguage('Language');
     setSelectedCity('City');
-    setIsAvailableChecked(false);
-    setIsPlegedChecked(false);
+    setAvailableChecked(false);
+    setPlegedChecked(false);
     setBookRating([0, 0]);
     setUserRating([0, 0]);
   };

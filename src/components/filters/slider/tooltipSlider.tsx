@@ -1,15 +1,18 @@
 import * as React from 'react';
+import { useEffect, useRef } from 'react';
 import Slider from 'rc-slider';
 import type { SliderProps } from 'rc-slider';
 import raf from 'rc-util/lib/raf';
 import Tooltip from 'rc-tooltip';
 
-const HandleTooltip = (props: {
+type HandleTooltipObj = {
   value: number;
   children: React.ReactElement;
   visible: boolean;
   tipFormatter?: (value: number) => React.ReactNode;
-}) => {
+};
+
+const HandleTooltip = (props: HandleTooltipObj) => {
   const {
     value,
     children,
@@ -17,28 +20,22 @@ const HandleTooltip = (props: {
     tipFormatter = (val) => `${val} %`,
     ...restProps
   } = props;
-  // console.log(value);
 
-  const tooltipRef = React.useRef<any>();
-  const rafRef = React.useRef<number | null>(null);
+  const tooltipRef = useRef<any>();
+  const rafRef = useRef<number | null>(null);
 
-  function cancelKeepAlign() {
+  const cancelKeepAlign = () => {
     raf.cancel(rafRef.current!);
-  }
+  };
 
-  function keepAlign() {
+  const keepAlign = () => {
     rafRef.current = raf(() => {
       tooltipRef.current?.forcePopupAlign();
     });
-  }
+  };
 
-  React.useEffect(() => {
-    if (visible) {
-      keepAlign();
-    } else {
-      cancelKeepAlign();
-    }
-
+  useEffect(() => {
+    visible ? keepAlign() : cancelKeepAlign();
     return cancelKeepAlign;
   }, [value, visible]);
 
@@ -56,14 +53,6 @@ const HandleTooltip = (props: {
   );
 };
 
-export const handleRender: SliderProps['handleRender'] = (node, props) => {
-  return (
-    <HandleTooltip value={props.value} visible={props.dragging}>
-      {node}
-    </HandleTooltip>
-  );
-};
-
 const TooltipSlider = ({
   tipFormatter,
   tipProps,
@@ -76,7 +65,8 @@ const TooltipSlider = ({
     return (
       <HandleTooltip
         value={handleProps.value}
-        visible={handleProps.dragging}
+        visible={!!handleProps.value}
+        // visible={handleProps.dragging}
         tipFormatter={tipFormatter}
         {...tipProps}
       >

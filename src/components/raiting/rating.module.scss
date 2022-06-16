@@ -1,11 +1,14 @@
 @import '/styles/colors.module.scss';
 
 .rating {
+  z-index: 5;
+  position: absolute;
+  top: 30px;
+  right: 30px;
   width: 72px;
   height: 37px;
   border-radius: 4px;
-  //   background-color: $color-background-card;
-  background-color: rgb(169, 170, 238);
+  background-color: $color-background-card;
   padding: 0 10px;
   display: flex;
   justify-content: space-between;

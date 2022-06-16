@@ -1,17 +1,24 @@
 import { ChangeEvent, FC } from 'react';
 import classes from './dropdown.module.scss';
 
-/**
- *
- * @param param0 value- default;
- * @returns
- */
-const Dropdown: FC<{
+type Props = {
   dropList: { dropListItm: string; id: number }[];
   value: string;
   onChangeDropdown: (selectedDropdown: string) => void;
   isGanreSelected?: boolean;
-}> = ({ dropList, value, onChangeDropdown, isGanreSelected }) => {
+};
+
+/**
+ *
+ * @param param0 value- first time is default;
+ * @returns
+ */
+const Dropdown: FC<Props> = ({
+  dropList,
+  value,
+  onChangeDropdown,
+  isGanreSelected,
+}) => {
   const dropdownChangeHandler = (event: ChangeEvent<HTMLSelectElement>) => {
     onChangeDropdown(event.target.value);
   };

@@ -11,6 +11,9 @@
   border-radius: 8px;
   width: 167px;
   height: 51px;
+  &:disabled {
+    background: #d35279;
+  }
 }
 
 .secondary {
