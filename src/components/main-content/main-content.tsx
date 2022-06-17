@@ -1,5 +1,7 @@
 import BookCard from '../book-card/book-card';
 import Filters from '../filters/filters';
+import { Genre } from '../type/enums';
+import { Language } from '../type/enums';
 
 import classes from './main-content.module.scss';
 /**
@@ -8,17 +10,18 @@ import classes from './main-content.module.scss';
  */
 const MainPage = () => {
   type DUMMY_BOOK_OBJ = {
-    coverImg: string;
-    title: string;
-    author: string;
-    genre: string[];
-    year: number;
-    language: string;
-    publisher: string;
     id: number;
-    available: boolean;
+    title: string;
+    image: string;
+    author: string;
+    genre: Genre[];
+    language: Language[];
+    alreadyReadTimes?: number;
+    availabilityStatus: boolean;
+    rating: number;
     pledge?: number;
-    read__times?: number;
+    publisher: string;
+    year: number;
   };
 
   type DUMMY_BOOKHANDLER_OBJ = {
@@ -47,29 +50,31 @@ const MainPage = () => {
       avatar: '/assets/avatar/picard.jpeg',
       books: [
         {
-          coverImg: '/assets/book-cover/portret-doriana-greya.jpg',
+          image: '/assets/book-cover/portret-doriana-greya.jpg',
           title: 'The Picture of Dorian Gray',
           author: 'Oscar Wilde',
-          genre: ['gotic literature'],
+          genre: [Genre.adventure, Genre.fantasy],
           year: 1890,
-          language: 'English',
+          language: [Language.English],
           publisher: 'Folio',
           id: 6,
-          read__times: 10,
-          available: true,
+          alreadyReadTimes: 10,
+          availabilityStatus: true,
+          rating: 0,
         },
         {
-          coverImg: '/assets/book-cover/Paris.jpg',
+          image: '/assets/book-cover/Paris.jpg',
           title: 'Paris',
           author: 'Edward Reserfort',
-          genre: ['historique', 'saga'],
+          genre: [Genre.historique, Genre.saga],
           year: 2013,
-          language: 'French',
+          language: [Language.French],
           publisher: 'Lever du soleil',
           pledge: 200,
           id: 3,
-          read__times: 265,
-          available: false,
+          alreadyReadTimes: 265,
+          availabilityStatus: false,
+          rating: 2,
         },
       ],
     },
@@ -85,29 +90,31 @@ const MainPage = () => {
       avatar: '/assets/avatar/picard.jpeg',
       books: [
         {
-          coverImg: '/assets/book-cover/fellowship-of-the-ring.jpg',
+          image: '/assets/book-cover/fellowship-of-the-ring.jpg',
           title: 'Fellowship of the ring',
           author: 'John Ronald Reuel Tolkien',
-          genre: ['Fantasy'],
+          genre: [Genre.fantasy],
           year: 1954,
-          language: 'British',
+          language: [Language.English],
           publisher: 'Sunrise',
           pledge: 2000,
           id: 45,
-          available: true,
+          availabilityStatus: true,
+          rating: 4,
         },
         {
-          coverImg: '/assets/book-cover/return-of-the-king.jpg',
+          image: '/assets/book-cover/return-of-the-king.jpg',
           title: 'Return of The king',
           author: 'John Ronald Reuel Tolkien',
-          genre: ['fantasy'],
+          genre: [Genre.fantasy],
           year: 1955,
-          language: 'British',
+          language: [Language.English],
           publisher: 'Sunrise',
           pledge: 1500,
           id: 5,
-          read__times: 15,
-          available: false,
+          alreadyReadTimes: 15,
+          availabilityStatus: false,
+          rating: 5,
         },
       ],
     },
@@ -123,28 +130,30 @@ const MainPage = () => {
       avatar: '/assets/avatar/picard.jpeg',
       books: [
         {
-          coverImg: '/assets/book-cover/angels-demons.jpg',
+          image: '/assets/book-cover/angels-demons.jpg',
           title: 'Angels and Demons',
           author: 'Dan Brown',
-          genre: ['detective', 'adventure'],
+          genre: [Genre.adventure, Genre.detective],
           year: 1999,
-          language: 'English',
+          language: [Language.English],
           publisher: 'Svitanok',
           pledge: 200,
           id: 1,
-          read__times: 48,
-          available: false,
+          alreadyReadTimes: 48,
+          availabilityStatus: false,
+          rating: 4.5,
         },
         {
-          coverImg: '/assets/book-cover/Crime and Punishment.jpg',
+          image: '/assets/book-cover/Crime and Punishment.jpg',
           title: 'Crime and Punishment',
           author: 'Fyodor Dostoevsky',
-          genre: ['socio-psychological novel'],
+          genre: [Genre['socio-psychological novel']],
           year: 1866,
-          language: 'Ukrainian',
+          language: [Language.Ukrainian],
           publisher: 'Zakat',
           id: 2,
-          available: true,
+          availabilityStatus: true,
+          rating: 2.5,
         },
       ],
     },

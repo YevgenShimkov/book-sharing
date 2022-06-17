@@ -1,9 +1,10 @@
+import { FC } from 'react';
 import classes from './rating.module.scss';
 
-const rating = () => {
+const rating: FC<{ rating: number }> = ({ rating }) => {
   return (
     <div className={classes.rating}>
-      <div className={classes.weigth}>4,6</div>
+      <div className={classes.weigth}>{rating}</div>
       <span />
     </div>
   );

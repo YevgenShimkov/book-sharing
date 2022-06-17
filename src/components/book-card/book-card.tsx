@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import Image from 'next/image';
 
 import Card from '../card/Card';
@@ -5,22 +6,24 @@ import Rating from '../raiting/rating';
 import BookDetails from '../book-details/book-details';
 import BookHolderCard from '../user-card/book-holder-card';
 import Button from '../button/button';
+import { Genre } from '../type/enums';
+import { Language } from '../type/enums';
 import classes from './book-card.module.scss';
-import { FC } from 'react';
 
 type Props = {
   book: {
-    coverImg: string;
+    image: string;
     title: string;
     author: string;
-    genre: string[];
+    genre: Genre[];
     year: number;
-    language: string;
+    language: Language[];
     publisher: string;
     id: number;
-    available: boolean;
+    availabilityStatus: boolean;
     pledge?: number;
-    read__times?: number;
+    alreadyReadTimes?: number;
+    rating: number;
   };
   name: string;
   status: boolean;
@@ -36,13 +39,13 @@ const BookCard: FC<Props> = ({ name, status, city, avatar, rating, book }) => {
   return (
     <Card className={'book'}>
       <Image
-        src={book.coverImg}
+        src={book.image}
         className={classes.cover}
         height={346}
         width={414}
         alt='book cover'
       />
-      <Rating />
+      {book.rating !== 0 && <Rating rating={book.rating} />}
       <div className={classes.container}>
         <BookDetails book={book} />
         <BookHolderCard
@@ -57,7 +60,7 @@ const BookCard: FC<Props> = ({ name, status, city, avatar, rating, book }) => {
             type='button'
             className={''}
             onClick={orderButtonHandler}
-            disabled={!book.available}
+            disabled={!book.availabilityStatus}
           >
             Order book
           </Button>

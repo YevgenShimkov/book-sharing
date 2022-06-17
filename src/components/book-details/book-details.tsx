@@ -1,38 +1,66 @@
 import Image from 'next/image';
 import { FC } from 'react';
 
+import { Genre } from '../type/enums';
+import { Language } from '../type/enums';
 import classes from './book-details.module.scss';
 
 const DEFAULT_CURRENCY = 'uah';
 
+const languageList = ['English', 'Ukrainian', 'French'];
+
+const genreList = [
+  'gotic literature',
+  'fantasy',
+  'historique',
+  'saga',
+  'detective',
+  'adventure',
+  'socio-psychological novel',
+];
+
 type Props = {
   book: {
-    coverImg: string;
+    image: string;
     title: string;
     author: string;
-    genre: string[];
+    genre: Genre[];
     year: number;
-    language: string;
+    language: Language[];
     publisher: string;
     id: number;
-    available: boolean;
+    availabilityStatus: boolean;
     pledge?: number;
-    read__times?: number;
+    alreadyReadTimes?: number;
+    rating: number;
   };
 };
 
 const BookDetails: FC<Props> = ({ book }) => {
-  const { available, title, author, genre, language, pledge, read__times } =
-    book;
+  const {
+    availabilityStatus,
+    title,
+    author,
+    genre,
+    language,
+    pledge,
+    alreadyReadTimes,
+  } = book;
 
   let ganre = '';
+  let lang = '';
 
+  language.forEach((itm) => {
+    lang = languageList[itm];
+  });
+  // if (genre) {
   genre.forEach((itm) => {
     ganre =
       ganre.length === 0
-        ? ganre + itm.toString()
-        : ganre + ', ' + itm.toString();
+        ? ganre + genreList[itm]
+        : ganre + ', ' + genreList[itm];
   });
+  // }
 
   return (
     <div className={classes.book__details}>
@@ -69,7 +97,7 @@ const BookDetails: FC<Props> = ({ book }) => {
             </li>
             <li>
               <div className={classes.characteristic}>Language:</div>
-              <div className={classes.descr}>{language}</div>
+              <div className={classes.descr}>{lang}</div>
             </li>
           </ul>
         </div>
@@ -77,7 +105,7 @@ const BookDetails: FC<Props> = ({ book }) => {
       <div className={classes.subwrapper}>
         <div
           className={`${classes.available} ${
-            available ? classes[''] : classes['available__not']
+            availabilityStatus ? classes[''] : classes['available__not']
           }`}
         >
           available
@@ -90,8 +118,8 @@ const BookDetails: FC<Props> = ({ book }) => {
             </div>
           )}
         </div>
-        {read__times && (
-          <div className={classes.read__times}>{read__times}</div>
+        {alreadyReadTimes && (
+          <div className={classes.read__times}>{alreadyReadTimes}</div>
         )}
       </div>
     </div>
