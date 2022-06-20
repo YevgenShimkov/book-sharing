@@ -6,25 +6,11 @@ import Rating from '../raiting/rating';
 import BookDetails from '../book-details/book-details';
 import BookHolderCard from '../user-card/book-holder-card';
 import Button from '../button/button';
-import { Genre } from '../type/enums';
-import { Language } from '../type/enums';
+import { DUMMY_BOOK_OBJ } from '../type/data-types';
 import classes from './book-card.module.scss';
 
 type Props = {
-  book: {
-    image: string;
-    title: string;
-    author: string;
-    genre: Genre[];
-    year: number;
-    language: Language[];
-    publisher: string;
-    id: number;
-    availabilityStatus: boolean;
-    pledge?: number;
-    alreadyReadTimes?: number;
-    rating: number;
-  };
+  book: DUMMY_BOOK_OBJ;
   name: string;
   status: boolean;
   city: string;

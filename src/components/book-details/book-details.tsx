@@ -1,42 +1,18 @@
 import Image from 'next/image';
-import { FC } from 'react';
-
-import { Genre } from '../type/enums';
-import { Language } from '../type/enums';
+import { FC, useEffect, useState } from 'react';
+import { DUMMY_BOOK_OBJ } from '../type/data-types';
 import classes from './book-details.module.scss';
 
 const DEFAULT_CURRENCY = 'uah';
 
-const languageList = ['English', 'Ukrainian', 'French'];
-
-const genreList = [
-  'gotic literature',
-  'fantasy',
-  'historique',
-  'saga',
-  'detective',
-  'adventure',
-  'socio-psychological novel',
-];
-
 type Props = {
-  book: {
-    image: string;
-    title: string;
-    author: string;
-    genre: Genre[];
-    year: number;
-    language: Language[];
-    publisher: string;
-    id: number;
-    availabilityStatus: boolean;
-    pledge?: number;
-    alreadyReadTimes?: number;
-    rating: number;
-  };
+  book: DUMMY_BOOK_OBJ;
 };
 
 const BookDetails: FC<Props> = ({ book }) => {
+  const [langSet, setLangSet] = useState('');
+  const [genreSet, setGenreSet] = useState('');
+
   const {
     availabilityStatus,
     title,
@@ -47,20 +23,11 @@ const BookDetails: FC<Props> = ({ book }) => {
     alreadyReadTimes,
   } = book;
 
-  let ganre = '';
-  let lang = '';
-
-  language.forEach((itm) => {
-    lang = languageList[itm];
-  });
-  // if (genre) {
-  genre.forEach((itm) => {
-    ganre =
-      ganre.length === 0
-        ? ganre + genreList[itm]
-        : ganre + ', ' + genreList[itm];
-  });
-  // }
+  // array processing genre & language
+  useEffect(() => {
+    setGenreSet(genre.join(', '));
+    setLangSet(language.join(', '));
+  }, [genre, language]);
 
   return (
     <div className={classes.book__details}>
@@ -93,11 +60,11 @@ const BookDetails: FC<Props> = ({ book }) => {
             </li>
             <li>
               <div className={classes.characteristic}>Genre:</div>
-              <div className={classes.descr}>{ganre}</div>
+              <div className={classes.descr}>{genreSet}</div>
             </li>
             <li>
               <div className={classes.characteristic}>Language:</div>
-              <div className={classes.descr}>{lang}</div>
+              <div className={classes.descr}>{langSet}</div>
             </li>
           </ul>
         </div>

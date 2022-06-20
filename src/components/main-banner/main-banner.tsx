@@ -11,6 +11,7 @@ const MainBanner = () => {
   );
   return (
     <section className={classes.main__banner}>
+      {title}
       <Search />
     </section>
   );
