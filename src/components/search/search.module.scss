@@ -4,6 +4,7 @@
   justify-content: center;
   span {
     position: relative;
+    cursor: pointer;
   }
   span::before {
     content: '';

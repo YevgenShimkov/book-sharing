@@ -1,14 +1,16 @@
-import TooltipSlider, { handleRender } from './tooltipSlider';
+import TooltipSlider from './tooltipSlider';
 import { FC } from 'react';
 
 import classes from './slider-wrapper.module.scss';
 
-const Sliders: FC<{
+type Props = {
   sliderRatingHandler: (value: number[]) => void;
   min: number;
   max: number;
   value: number[];
-}> = ({ sliderRatingHandler, min, max, value }) => {
+};
+
+const Sliders: FC<Props> = ({ sliderRatingHandler, min, max, value }) => {
   const sliderChangeRatingHandler = (value: number | number[]) => {
     if (typeof value === 'object') {
       sliderRatingHandler(value);

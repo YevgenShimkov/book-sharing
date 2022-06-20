@@ -6,6 +6,7 @@
   background-color: $color-background-card;
   box-shadow: 2px 4px 10px 1px rgba(181, 181, 181, 0.25);
   border-radius: 10px;
+  margin-bottom: 60px;
 }
 
 .filter {
@@ -13,5 +14,7 @@
 }
 
 .book {
-  padding: 346px 20px 30px 20px;
+  padding: 0;
+  position: relative;
+  height: 749px;
 }

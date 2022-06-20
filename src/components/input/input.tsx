@@ -4,6 +4,7 @@ import classes from './input.module.scss';
 
 type Props = {
   children?: React.ReactNode;
+  type?: string;
   id: string;
   label?: string;
   placeholder: string;
